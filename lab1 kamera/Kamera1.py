@@ -53,13 +53,14 @@ while True:
         recordingOn = not recordingOn
         time.sleep(0.5)
         if recordingOn:
-            print("Koniec Nagrywania")
-            out.release()
-        else:
             print("Początek Nagrywania")
             fileNameR = "zapisany_film" + str(videoIndex) + ".avi"
             out = cv2.VideoWriter(fileNameR, fourcc, 20.0, (640, 480))
             videoIndex += 1
+
+        else:
+            print("Koniec Nagrywania")
+            out.release()
     # na podstawie zmiennej recordingOn program decyduje czy zapisać kolejną klatkę filmu czy nie
     if recordingOn:
         out.write(frame)
